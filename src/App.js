@@ -11,6 +11,7 @@ function App() {
       </nav>
       <Routes>
         <Route path="/contatos" element={<Home />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
