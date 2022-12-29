@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 // pages
 import Home from "./pages/Home"
@@ -10,9 +10,7 @@ function App() {
         <h1>CRUD Contatos Supabase</h1>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/create" element={<Home />} />
-        <Route path="/:id" element={<Home />} />
+        <Route path="/contatos" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
