@@ -5,12 +5,14 @@ import Contatohdl from '../components/Contatohdl'
 const Home = () => {
   const [fetchError, setFetchError] = useState(null)
   const [contatos, setContatos] = useState(null)
-  const [filteredList, setFilteredList] = new useState(contatos);
   const [nome, setNome] = useState('')
   const [fone, setFone] = useState('')
   const [email, setEmail] = useState('')
   const [formError, setFormError] = useState(null)
   const [ id, setId ] = useState('')
+  const [query, setQuery] = useState("")
+  const [addShow, setAddShow] = useState(false)
+  const [editShow, setEditShow] = useState(false)
   const handleSubmitAdd = async (e) => {
     e.preventDefault()
     if (!nome || !fone || !email) {
@@ -68,46 +70,42 @@ const Home = () => {
     fetchContatos()
   }, [])
 
-  const filterBySearch = (event) => {
-    const query = event.target.value;
-    var updatedList = [...contatos];
-    updatedList = updatedList.filter((item) => {
-      return item.toString().toLowerCase().indexOf(query.toLowerCase()) !== -1
-    });
-    setFilteredList(updatedList);
-  };
-
+  const addHdl = () => {
+    setAddShow(true)
+    setEditShow(false)
+  }
+  
+  const editHdl = () => {
+    setEditShow(true)
+    setAddShow(false)
+  }
   return (
     <div className="page home">
       <div>
       <h1>Contatos</h1>
       <hr></hr>
-
-      <div className="App">
-      <div className="search-header">
-        <div className="search-text">Search:</div>
-        <input id="search-box" onChange={filterBySearch} />
-      </div>
       <div className="list">
+        <h4 style={{marginBottom: '0px'}}>Buscar contato</h4>
+        <input type="text" className="search" placeholder="Por nome" onChange={e=>setQuery(e.target.value.toLowerCase())}/>
       {fetchError && (<p>{fetchError}</p>)}
-      {filteredList && (
+      {contatos && (
           <div className="ctts-grid">
-            {filteredList.map(contato => (
-              <Contatohdl key={contato.id} contato={contato} />
-            ))}
+            {contatos.filter((user) =>
+            user.nome.toLowerCase().includes(query))
+            .map((user => (
+              <Contatohdl key={user.id} contato={user} />
+            )))}
           </div>
       )}
         </div>
     </div>
-      
-    </div>
     <br></br>
     <br></br>
     <div className="container">
-	        <input style={{marginRight: '8px'}} type="button" id="adicionar" value="Adicionar" />
-	        <input type="button" id="editar" value="Editar" />
+	        <input style={{marginRight: '8px'}} type="button" id="adicionar" value="Adicionar" onClick={addHdl}/>
+	        <input type="button" id="editar" value="Editar" onClick={editHdl}/>
     </div>
-    <div id="add">
+    <div id="add" style={{display: addShow ? 'block' : 'none'}}>
     <h4>Adicionar Contato</h4>
       <form onSubmit={handleSubmitAdd}>
         <div>
@@ -140,8 +138,8 @@ const Home = () => {
         <button>Salvar</button>
         {formError && <p className="error">{formError}</p>}
       </form>
-    </div>
-    <div id="edit">
+    </div> 
+    <div id="edit" style={{display: editShow ? 'block' : 'none'}}>
     <h4>Editar Contato</h4>
       <form onSubmit={handleSubmitEdit}>
       <div>
