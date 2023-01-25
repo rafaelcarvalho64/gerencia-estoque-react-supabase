@@ -1,18 +1,6 @@
-# Aplicação web para realizar o CRUD de contatos com SUPABASE
+# Aplicação web react para realizar o CRUD de contatos com SUPABASE
 
-Instituto Federal do pará
-
-Análise e Desenvolvimento de Sistemas
-
-Professor CLAUDIO ROBERTO DE LIMA MARTINS
-
-Discentes:
-
-RAFAEL AUGUSTO BARBOSA DE CARVALHO - 20200795605
-
-ISRAEL PANTOJA PEREIRA DE CARVALHO - 20200795035
-
-Instruções da atividade:
+Instruções:
 
 É necessário possuir Node.js e NPM instalado.
 
