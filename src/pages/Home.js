@@ -1,6 +1,7 @@
 import supabase from '../config/supabaseClient'
 import { useEffect, useState } from 'react'
-import Contatohdl from '../components/Contatohdl'
+import ContatoCard from '../views/ContatoCard'
+
 
 const Home = () => {
   const [fetchError, setFetchError] = useState(null)
@@ -93,7 +94,7 @@ const Home = () => {
             {contatos.filter((user) =>
             user.nome.toLowerCase().includes(query))
             .map((user => (
-              <Contatohdl key={user.id} contato={user} />
+              <ContatoCard key={user.id} contato={user} />
             )))}
           </div>
       )}
