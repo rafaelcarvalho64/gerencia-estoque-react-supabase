@@ -19,6 +19,15 @@ class Contato {
     return data
   }
 
+  static async update(contatoData, id) {
+    const { data, error } = await supabase.from('Contatos').update(contatoData).eq('id', id)
+    if (error) {
+      console.log(error)
+      throw new Error('Error.')
+    }
+    return data
+  }
+
   static async delete(id) {
     const { data, error } = await supabase.from('Contatos').delete().eq('id', id)
     if (error) {
