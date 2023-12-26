@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import ContatoController from '../controllers/ContatoController'
+import Contato from '../models/Contato'
 
 const ContatoCard = ({ contato }) => {
   const [formError, setFormError] = useState(null)
   
   const handleDelete = async () => {
     try {
-      await ContatoController.delete(contato.id)
+      await Contato.delete(contato.id)
       window.location.reload(true)
     } catch (error) {
       console.log(error)

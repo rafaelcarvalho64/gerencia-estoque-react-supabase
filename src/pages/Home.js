@@ -1,7 +1,6 @@
 import supabase from '../config/supabaseClient'
 import { useEffect, useState } from 'react'
 import ContatoCard from '../views/ContatoCard'
-import ContatoController from '../controllers/ContatoController'
 
 
 const Home = () => {
@@ -21,7 +20,9 @@ const Home = () => {
       setFormError('Preencha os campos corretamente')
       return
     }
-    const { data, error } = ContatoController.create({nome, fone, email})
+    const { data, error } = await supabase
+      .from('Contatos')
+      .insert([{ nome, fone, email }])
     if (error) {
       console.log(error)
       setFormError('Error.')
@@ -37,7 +38,10 @@ const Home = () => {
       setFormError('Preencha os campos corretamente')
       return
     }
-    const { data, error } = ContatoController.update({nome, fone, email}, id)
+    const { data, error } = await supabase
+      .from('Contatos')
+      .update({ nome, fone, email })
+      .eq('id', id)
       if (error) {
       console.log(error)
       setFormError('Error.')
@@ -51,8 +55,9 @@ const Home = () => {
   useEffect(() => {
     const fetchContatos = async () => {
       const { data, error } = await supabase
-      .from('Contatos')
-      .select()
+        .from('Contatos')
+        .select()
+      
       if (error) {
         setFetchError('Falha ao recuperar contatos')
         setContatos(null)
@@ -60,6 +65,7 @@ const Home = () => {
       else if (data) {
         setContatos(data)
         setFetchError(null)
+        
       }
     }
     fetchContatos()
