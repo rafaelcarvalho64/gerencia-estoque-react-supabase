@@ -109,7 +109,7 @@ const Home = () => {
     <h4>Adicionar Contato</h4>
       <form onSubmit={handleSubmitAdd}>
         <div>
-        <label htmlFor="title">Nome:</label>
+        <label>Nome:</label>
         <input 
           type="text" 
           id="nome"
@@ -118,16 +118,17 @@ const Home = () => {
         />
       </div>
       <div>
-        <label htmlFor="method">Fone:</label>
+        <label>Fone:</label>
         <input 
-        type="text"
+          type="text"
+          mask="##"
           id="fone"
           value={fone}
           onChange={(e) => setFone(e.target.value)}
         />
       </div>
       <div>
-        <label htmlFor="rating">Email:</label>
+        <label>Email:</label>
         <input 
         type="text"
           id="email"
@@ -143,7 +144,7 @@ const Home = () => {
     <h4>Editar Contato</h4>
       <form onSubmit={handleSubmitEdit}>
       <div>
-          <label htmlFor="title">Id:</label>
+          <label>Id:</label>
           <input 
             type="text" 
             id="id"
@@ -152,7 +153,7 @@ const Home = () => {
           />
         </div>
         <div>
-          <label htmlFor="title">Nome:</label>
+          <label>Nome:</label>
           <input 
             type="text" 
             id="nome"
@@ -161,7 +162,7 @@ const Home = () => {
           />
         </div>
       <div>
-        <label htmlFor="method">Fone:</label>
+        <label>Fone:</label>
         <input 
         type="text"
           id="fone"
@@ -170,7 +171,7 @@ const Home = () => {
         />
       </div>
       <div>
-        <label htmlFor="rating">Email:</label>
+        <label>Email:</label>
         <input 
         type="text"
           id="email"

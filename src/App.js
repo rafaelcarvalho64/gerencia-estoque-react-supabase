@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <nav>
-        <h1>CRUD Contatos Supabase</h1>
+        <h1>Gerência de Estoque e Inventário</h1>
       </nav>
       <Routes>
         <Route path="/contatos" element={<Home />} />
