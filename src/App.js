@@ -12,7 +12,6 @@ function App() {
       <Routes>
         <Route path="/contatos" element={<Home />} />
         <Route path="/" element={<Home />} />
-        <Route path="/crud-contatos-supabase-react" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
