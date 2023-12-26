@@ -21,7 +21,6 @@ const Contatohdl = ({ contato, count }) => {
     }
   };
 
-  console.log(count);
   return (
     <div className="contato-card">
       <table className="item-table">
