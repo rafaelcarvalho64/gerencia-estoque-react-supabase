@@ -63,3 +63,35 @@ nav h1 {
   line-height: 0px;
   text-align: center;
 }
+
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contact-table th,
+.contact-table td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+.contact-table th {
+  background-color: rgba(0, 191, 255, 0.575);
+}
+
+.blackLetter {
+  color: black;
+}
+
+.softBlue {
+  background-color: deepskyblue;
+}
+
+.fivepc {
+  max-width: 5% !important;
+}
+.fifteenpc {
+  min-width: 25% !important;
+  max-width: 25% !important;
+}

@@ -8,6 +8,9 @@ const Home = () => {
   const [nome, setNome] = useState('')
   const [fone, setFone] = useState('')
   const [email, setEmail] = useState('')
+  const [dateRec, setDateRec] = useState('')
+  const [dateVal, setDateVal] = useState('')
+  const [qtd, setQtd] = useState('')
   const [formError, setFormError] = useState(null)
   const [ id, setId ] = useState('')
   const [query, setQuery] = useState("")
@@ -15,13 +18,13 @@ const Home = () => {
   const [editShow, setEditShow] = useState(false)
   const handleSubmitAdd = async (e) => {
     e.preventDefault()
-    if (!nome || !fone || !email) {
+    if (!nome || !fone || !email || !dateRec || !dateVal || !qtd) {
       setFormError('Preencha os campos corretamente')
       return
     }
     const { data, error } = await supabase
       .from('Contatos')
-      .insert([{ nome, fone, email }])
+      .insert([{ nome, fone, email, dateRec, dateVal, qtd }])
     if (error) {
       console.log(error)
       setFormError('Error.')
@@ -33,13 +36,13 @@ const Home = () => {
   }
   const handleSubmitEdit = async (e) => {
     e.preventDefault()
-    if (!id || !nome || !fone || !email) {
+    if (!nome || !fone || !email || !dateRec || !dateVal || !qtd) {
       setFormError('Preencha os campos corretamente')
       return
     }
     const { data, error } = await supabase
       .from('Contatos')
-      .update({ nome, fone, email })
+      .update([{ nome, fone, email, dateRec, dateVal, qtd }])
       .eq('id', id)
       if (error) {
       console.log(error)
@@ -58,7 +61,7 @@ const Home = () => {
         .select()
       
       if (error) {
-        setFetchError('Falha ao recuperar contatos')
+        setFetchError('Falha ao recuperar Itens')
         setContatos(null)
       }
       else if (data) {
@@ -79,22 +82,26 @@ const Home = () => {
     setEditShow(true)
     setAddShow(false)
   }
+
+  const a = 0;
   return (
     <div className="page home">
       <div>
-      <h1>Contatos</h1>
+      <h1>Lista de Itens</h1>
       <hr></hr>
       <div className="list">
-        <h4 style={{marginBottom: '0px'}}>Buscar contato</h4>
+        <h4 style={{marginBottom: '0px'}}>Buscar Item</h4>
         <input type="text" className="search" placeholder="Por nome" onChange={e=>setQuery(e.target.value.toLowerCase())}/>
+        <br></br>
+        <br></br>
       {fetchError && (<p>{fetchError}</p>)}
       {contatos && (
           <div className="ctts-grid">
             {contatos.filter((user) =>
             user.nome.toLowerCase().includes(query))
-            .map((user => (
-              <Contatohdl key={user.id} contato={user} />
-            )))}
+            .map((user, index) => (
+              <Contatohdl key={user.id} contato={user} count={index === 0}/>
+            ))}
           </div>
       )}
         </div>
@@ -118,22 +125,48 @@ const Home = () => {
         />
       </div>
       <div>
-        <label>Fone:</label>
+        <label>Código:</label>
         <input 
-          type="text"
-          mask="##"
+          type="number"
           id="fone"
           value={fone}
           onChange={(e) => setFone(e.target.value)}
         />
       </div>
       <div>
-        <label>Email:</label>
+        <label>Tipo:</label>
         <input 
         type="text"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Data de Validade:</label>
+        <input 
+        type="text"
+          id="dateVal"
+          value={dateRec}
+          onChange={(e) => setDateRec(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Data de Recebimento:</label>
+        <input 
+        type="text"
+          id="dateVal"
+          value={dateVal}
+          onChange={(e) => setDateVal(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Quantidade:</label>
+        <input 
+        type="text"
+          id="qtd"
+          value={qtd}
+          onChange={(e) => setQtd(e.target.value)}
         />
       </div>
         <button>Salvar</button>
@@ -162,21 +195,48 @@ const Home = () => {
           />
         </div>
       <div>
-        <label>Fone:</label>
+        <label>Código:</label>
         <input 
-        type="text"
+        type="number"
           id="fone"
           value={fone}
           onChange={(e) => setFone(e.target.value)}
         />
       </div>
       <div>
-        <label>Email:</label>
+        <label>Tipo:</label>
         <input 
         type="text"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>      
+      <div>
+        <label>Data de Validade:</label>
+        <input 
+        type="text"
+          id="dateVal"
+          value={dateVal}
+          onChange={(e) => setDateRec(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Data de Recebimento:</label>
+        <input 
+        type="text"
+          id="dateVal"
+          value={dateVal}
+          onChange={(e) => setDateVal(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Quantidade:</label>
+        <input 
+        type="text"
+          id="qtd"
+          value={qtd}
+          onChange={(e) => setQtd(e.target.value)}
         />
       </div>
         <button>Salvar</button>
