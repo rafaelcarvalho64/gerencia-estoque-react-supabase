@@ -1,4 +1,4 @@
-# Aplicação web react para realizar o CRUD com SUPABASE
+# Aplicação web react para realizar CRUD com SUPABASE
 
 Instruções:
 
