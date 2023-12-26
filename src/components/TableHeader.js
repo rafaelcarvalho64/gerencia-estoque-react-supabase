@@ -1,6 +1,6 @@
 const TableHeader = ({}) => {
     return (
-        <table className="contact-table">
+        <table className="item-table">
             <thead>
                 <tr>
                 <th>ID</th>

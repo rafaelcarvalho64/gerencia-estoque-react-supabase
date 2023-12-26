@@ -64,19 +64,19 @@ nav h1 {
   text-align: center;
 }
 
-.contact-table {
+.item-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.contact-table th,
-.contact-table td {
+.item-table th,
+.item-table td {
   border: 1px solid black;
   padding: 8px;
   text-align: left;
 }
 
-.contact-table th {
+.item-table th {
   background-color: rgba(0, 191, 255, 0.575);
 }
 
@@ -89,9 +89,10 @@ nav h1 {
 }
 
 .fivepc {
-  max-width: 5% !important;
+  width: 5% !important;
+  overflow-wrap: anywhere;
 }
 .fifteenpc {
-  min-width: 25% !important;
-  max-width: 25% !important;
+  width: 15% !important;
+  overflow-wrap: anywhere;
 }

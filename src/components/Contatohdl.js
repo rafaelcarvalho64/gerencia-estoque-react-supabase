@@ -24,29 +24,29 @@ const Contatohdl = ({ contato, count }) => {
   console.log(count);
   return (
     <div className="contato-card">
-      <table className="contact-table">
+      <table className="item-table">
             <thead style={{display:`${!count ? 'none' : ''}`}}>
                 <tr>
-                <th className="">ID</th>
+                <th className="fivepc">ID</th>
                 <th className="fifteenpc">Nome</th>
                 <th className="fifteenpc">Código</th>
                 <th className="fifteenpc">Tipo</th>
                 <th className="fifteenpc">Recebimento</th>
                 <th className="fifteenpc">Validade</th>
                 <th className="fifteenpc">Quantidade</th>
-                <th className=""></th>
+                <th className="fivepc"></th>
                 </tr>
             </thead>
         <tbody>
           <tr>
-            <td className=""><u>#{contato.id}</u></td>
+            <td className="fivepc"><u>#{contato.id}</u></td>
             <td className="fifteenpc">{contato.nome || '-'}</td>
             <td className="fifteenpc">{contato.fone || '-'}</td>
             <td className="fifteenpc">{contato.email || '-'}</td>
             <td className="fifteenpc">{contato.dateRec || '-'}</td>
             <td className="fifteenpc">{contato.dateVal || '-'}</td>
             <td className="fifteenpc">{contato.qtd || '-'}</td>
-            <td className=" items-center">
+            <td className="fivepc items-center">
               <i className="material-icons" onClick={handleDelete}>delete</i>
             </td>
           </tr>

@@ -113,10 +113,10 @@ const Home = () => {
 	        <input type="button" id="editar" value="Editar" onClick={editHdl}/>
     </div>
     <div id="add" style={{display: addShow ? 'block' : 'none'}}>
-    <h4>Adicionar Contato</h4>
+    <h4>Adicionar Item</h4>
       <form onSubmit={handleSubmitAdd}>
         <div>
-        <label>Nome:</label>
+        <label>Nome: </label>
         <input 
           type="text" 
           id="nome"
@@ -125,7 +125,7 @@ const Home = () => {
         />
       </div>
       <div>
-        <label>Código:</label>
+        <label>Código: </label>
         <input 
           type="number"
           id="fone"
@@ -134,7 +134,7 @@ const Home = () => {
         />
       </div>
       <div>
-        <label>Tipo:</label>
+        <label>Tipo: </label>
         <input 
         type="text"
           id="email"
@@ -143,7 +143,7 @@ const Home = () => {
         />
       </div>
       <div>
-        <label>Data de Validade:</label>
+        <label>Data de Recebimento: </label>
         <input 
         type="text"
           id="dateVal"
@@ -152,7 +152,7 @@ const Home = () => {
         />
       </div>
       <div>
-        <label>Data de Recebimento:</label>
+        <label>Data de Validade: </label>
         <input 
         type="text"
           id="dateVal"
@@ -161,7 +161,7 @@ const Home = () => {
         />
       </div>
       <div>
-        <label>Quantidade:</label>
+        <label>Quantidade: </label>
         <input 
         type="text"
           id="qtd"
@@ -174,10 +174,10 @@ const Home = () => {
       </form>
     </div> 
     <div id="edit" style={{display: editShow ? 'block' : 'none'}}>
-    <h4>Editar Contato</h4>
+    <h4>Editar Item</h4>
       <form onSubmit={handleSubmitEdit}>
       <div>
-          <label>Id:</label>
+          <label>Id: </label>
           <input 
             type="text" 
             id="id"
@@ -186,7 +186,7 @@ const Home = () => {
           />
         </div>
         <div>
-          <label>Nome:</label>
+          <label>Nome: </label>
           <input 
             type="text" 
             id="nome"
@@ -195,7 +195,7 @@ const Home = () => {
           />
         </div>
       <div>
-        <label>Código:</label>
+        <label>Código: </label>
         <input 
         type="number"
           id="fone"
@@ -204,7 +204,7 @@ const Home = () => {
         />
       </div>
       <div>
-        <label>Tipo:</label>
+        <label>Tipo: </label>
         <input 
         type="text"
           id="email"
@@ -213,16 +213,16 @@ const Home = () => {
         />
       </div>      
       <div>
-        <label>Data de Validade:</label>
+        <label>Data de Recebimento: </label>
         <input 
         type="text"
           id="dateVal"
-          value={dateVal}
+          value={dateRec}
           onChange={(e) => setDateRec(e.target.value)}
         />
       </div>
       <div>
-        <label>Data de Recebimento:</label>
+        <label>Data de Validade: </label>
         <input 
         type="text"
           id="dateVal"
@@ -231,7 +231,7 @@ const Home = () => {
         />
       </div>
       <div>
-        <label>Quantidade:</label>
+        <label>Quantidade: </label>
         <input 
         type="text"
           id="qtd"
