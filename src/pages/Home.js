@@ -56,11 +56,25 @@ const Home = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    // Delete announcement from Supabase
+    const { error } = await supabase
+      .from('announcements')  // Adjust table name
+      .delete()
+      .eq('id', id); // Adjust field name if necessary
+
+    if (error) {
+      alert('Failed to delete announcement');
+    } else {
+      setAnnouncements(announcements.filter(announcement => announcement.id !== id));
+    }
+  };
+
   return (
     <div className="page home">
       <button onClick={handleOpenModal}>Adicionar aviso</button>
-      <br/>
-      <br/>
+      <br />
+      <br />
       <div className="list">
         {fetchError && <p>{fetchError}</p>}
         {announcements && (
@@ -70,7 +84,11 @@ const Home = () => {
                 announcement.title.toLowerCase().includes(query)
               )
               .map((announcement) => (
-                <AnnouncementCard key={announcement.id} announcement={announcement} />
+                <AnnouncementCard 
+                  key={announcement.id} 
+                  announcement={announcement} 
+                  onDelete={handleDelete} // Pass delete function
+                />
               ))}
           </div>
         )}
@@ -78,48 +96,46 @@ const Home = () => {
 
       {isModalOpen && (
         <div className="modal-overlay">
-        <div className="modal-content">
-          <span className="close" onClick={handleCloseModal}>&times;</span>
-          <h2>Criar novo aviso</h2>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              value={newAnnouncement.title}
-              onChange={handleInputChange}
-              required
-            />
-            <textarea
-              name="description"
-              placeholder="Description"
-              value={newAnnouncement.description}
-              onChange={handleInputChange}
-              required
-            />
-            <button type="submit">Adicionar aviso</button>
-          </form>
+          <div className="modal-content">
+            <span className="close" onClick={handleCloseModal}>&times;</span>
+            <h2>Criar novo aviso</h2>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                value={newAnnouncement.title}
+                onChange={handleInputChange}
+                required
+              />
+              <textarea
+                name="description"
+                placeholder="Description"
+                value={newAnnouncement.description}
+                onChange={handleInputChange}
+                required
+              />
+              <button type="submit">Adicionar aviso</button>
+            </form>
+          </div>
         </div>
-      </div>
-      
       )}
     </div>
   );
 };
 
-const AnnouncementCard = ({ announcement }) => {
+const AnnouncementCard = ({ announcement, onDelete }) => {
   return (
     <div className="card">
       <div className="card-header">
         <h2>{announcement.title}</h2>
-        {/* <span>{new Date(announcement.date).toLocaleDateString()}</span> */}
       </div>
       <div className="card-body">
         <p>{announcement.description}</p>
       </div>
-      {/* <div className="card-footer">
-        <button>More Info</button>
-      </div> */}
+      <div className="card-footer">
+        <button onClick={() => onDelete(announcement.id)}>Delete</button>
+      </div>
     </div>
   );
 };
