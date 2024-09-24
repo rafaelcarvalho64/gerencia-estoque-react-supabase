@@ -31,6 +31,7 @@ const Home = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setNewAnnouncement({ title: '', description: '' }); // Reset form
   };
 
   const handleInputChange = (e) => {
@@ -50,7 +51,7 @@ const Home = () => {
     if (error) {
       alert('Failed to add announcement');
     } else {
-      setAnnouncements([...announcements, newAnnouncement]);
+      setAnnouncements([...announcements, { title, description }]);
       handleCloseModal();
     }
   };
@@ -58,6 +59,7 @@ const Home = () => {
   return (
     <div className="page home">
       <button onClick={handleOpenModal}>Adicionar aviso</button>
+      <br/>
       <br/>
       <div className="list">
         {fetchError && <p>{fetchError}</p>}
@@ -75,30 +77,31 @@ const Home = () => {
       </div>
 
       {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={handleCloseModal}>&times;</span>
-            <h2>Create New Announcement</h2>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="title"
-                placeholder="Title"
-                value={newAnnouncement.title}
-                onChange={handleInputChange}
-                required
-              />
-              <textarea
-                name="description"
-                placeholder="Description"
-                value={newAnnouncement.description}
-                onChange={handleInputChange}
-                required
-              />
-              <button type="submit">Add Announcement</button>
-            </form>
-          </div>
+        <div className="modal-overlay">
+        <div className="modal-content">
+          <span className="close" onClick={handleCloseModal}>&times;</span>
+          <h2>Criar novo aviso</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+              value={newAnnouncement.title}
+              onChange={handleInputChange}
+              required
+            />
+            <textarea
+              name="description"
+              placeholder="Description"
+              value={newAnnouncement.description}
+              onChange={handleInputChange}
+              required
+            />
+            <button type="submit">Adicionar aviso</button>
+          </form>
         </div>
+      </div>
+      
       )}
     </div>
   );

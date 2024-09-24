@@ -85,7 +85,7 @@ nav h1 {
 }
 
 .softBlue {
-  background-color: deepskyblue;
+  background: linear-gradient(12deg, #00004d, #ff0080);
 }
 
 .fivepc {
@@ -96,3 +96,92 @@ nav h1 {
   width: 15% !important;
   overflow-wrap: anywhere;
 }
+
+.announcements-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  width: 300px;
+  background: linear-gradient(145deg, #00004d, #ff0080);
+  color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cardllla{  background: linear-gradient(145deg, #00004d, #ff0080);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  font-size: 1.2em;
+}
+
+.card-body {
+  margin-top: 10px;
+}
+
+.card-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  background-color: #0055ff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure modal is above other content */
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px; /* Adjust size */
+  color: #333; /* Color for close icon */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px; /* Set a width for the modal */
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+}
+
+input, textarea {
+  width: 300px; /* Full width */
+  margin-bottom: 15px; /* Space between fields */
+  padding: 10px; /* Inner padding for comfort */
+  border: 1px solid #ccc; /* Border style */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+}
+

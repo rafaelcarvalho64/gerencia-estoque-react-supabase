@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <nav className="softBlue">
-        <h1 className="blackLetter">Gerência de Estoque e Inventário</h1>
+        <h1 className="">Anúncios NOC metro</h1>
       </nav>
       <Routes>
         <Route path="/contatos" element={<Home />} />
